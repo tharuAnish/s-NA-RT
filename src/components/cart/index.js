@@ -56,7 +56,7 @@ function Cart() {
                   </td>
 
                   <td>
-                    <p>{item?.price}</p>
+                    <p>$$ {item?.price}</p>
                   </td>
                   <td className="py-5 px-4">
                     <Button onClick={() => handleRemoveFromCart(item?.id)}>
@@ -71,7 +71,7 @@ function Cart() {
         <div className="flex justify-end mr-32 mt-6">
           <div>
             <p className="text-lg font-bold">
-              Total <span>{totalAmount}</span>
+              Total $$ <span>{totalAmount}</span>
             </p>
           </div>
         </div>

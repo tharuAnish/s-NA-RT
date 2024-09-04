@@ -2,18 +2,18 @@
 
 import Link from "next/link"
 import { Button } from "../ui/button"
-// import { loginAction, logoutAction } from "@/actions"
+import { loginAction, logoutAction } from "@/action"
 
 function Header({ getSession }) {
   console.log(getSession, "getSession in header")
 
-  //   async function handleOauthSignOut() {
-  //     await logoutAction()
-  //   }
+  async function handleOauthSignOut() {
+    await logoutAction()
+  }
 
-  //   async function handleOauthSignIn() {
-  //     await loginAction()
-  //   }
+  async function handleOauthSignIn() {
+    await loginAction()
+  }
 
   return (
     <header className="flex shadow-md py-4 px-4 bg-white min-h-[70px] tracking-wide relative z-50">
@@ -29,12 +29,11 @@ function Header({ getSession }) {
         </li>
       </ul>
       <div className="flex space-x-3">
-        {/* <form
+        <form
           action={getSession?.user ? handleOauthSignOut : handleOauthSignIn}
         >
           <Button type="submit">{getSession?.user ? "Logout" : "Login"}</Button>
-        </form> */}
-        <Button>Logout</Button>
+        </form>
       </div>
     </header>
   )

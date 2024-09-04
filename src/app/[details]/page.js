@@ -1,9 +1,14 @@
 import { fetchProductDetails } from "@/action"
+import { auth } from "@/auth"
 import AddToCartButton from "@/components/add-to-cart-button"
+import { redirect } from "next/navigation"
 
 export default async function ProductDetails({ params }) {
+  const getSession = await auth()
+
+  if (!getSession?.user) redirect("/unauth-page")
+
   const getProductDetails = await fetchProductDetails(params.details)
-  console.log(getProductDetails)
   return (
     <div className="max-w-6xl mx-auto p-2">
       <div className="p-6">
@@ -14,7 +19,7 @@ export default async function ProductDetails({ params }) {
               alt={getProductDetails?.title}
               className="w-4/5 h-96 rounded object-cover"
             />
-            <hr className="border-black border-1 my-4" />
+            <hr className="border-stone-400 border-1 my-4" />
             <div className="flex flex-wrap gap-5 justify-center mx-auto">
               {getProductDetails?.images.map((imageItem) => (
                 <img

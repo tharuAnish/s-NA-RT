@@ -1,4 +1,4 @@
-// import Loading from "@/app/loading"
+import Loading from "@/app/loading"
 import { auth } from "@/auth"
 import { Suspense } from "react"
 
@@ -9,9 +9,7 @@ async function CommonLayout({ children }) {
 
   return (
     <ReduxProvider getSession={getSession}>
-      {/* <Suspense fallback={<Loading />}> */}
-      {children}
-      {/* </Suspense> */}
+      <Suspense fallback={<Loading />}>{children}</Suspense>
     </ReduxProvider>
   )
 }
